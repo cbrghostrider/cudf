@@ -12,7 +12,7 @@ RAPIDS_TESTS_DIR=${RAPIDS_TESTS_DIR:-"${RESULTS_DIR}/test-results"}/
 RAPIDS_COVERAGE_DIR=${RAPIDS_COVERAGE_DIR:-"${RESULTS_DIR}/coverage-results"}
 mkdir -p "${RAPIDS_TESTS_DIR}" "${RAPIDS_COVERAGE_DIR}"
 
-if [[ ${DISTRIBUTION} == "conda"]]; then
+if [[ ${DISTRIBUTION} == "conda" ]]; then
   . /opt/conda/etc/profile.d/conda.sh
 
   rapids-logger "Generate Python testing dependencies"
@@ -41,7 +41,7 @@ if [[ ${DISTRIBUTION} == "conda"]]; then
     --channel "${CPP_CHANNEL}" \
     --channel "${PYTHON_CHANNEL}" \
     cudf libcudf
-elif [[ ${DISTRIBUTION} == "wheel"]]; then
+elif [[ ${DISTRIBUTION} == "wheel" ]]; then
   RAPIDS_PY_CUDA_SUFFIX="$(rapids-wheel-ctk-name-gen ${RAPIDS_CUDA_VERSION})"
   RAPIDS_PY_WHEEL_NAME="cudf_${RAPIDS_PY_CUDA_SUFFIX}" rapids-download-wheels-from-s3 ./dist
 
